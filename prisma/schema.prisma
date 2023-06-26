@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+  binaryTargets = ["darwin-arm64", "native", "linux-musl-arm64-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ability {
+  id              Int               @id @default(autoincrement())
+  name            String?           @db.VarChar @unique
+  status          statuses?         @default(value: active)
+  created_at      DateTime?         @default(now())
+  last_update     DateTime?         @default(now())
+  pokemon_ability pokemon_ability[] 
+}
+
+model pokemon {
+  id              Int               @id @default(autoincrement())
+  name            String?           @db.VarChar
+  base_experience Int?
+  img_url         String?           @db.VarChar
+  team_id         Int?
+  status          statuses?         @default(value: active)
+  created_at      DateTime?         @default(now())
+  last_update     DateTime?         @default(now())
+  team            team?             @relation(fields: [team_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon_ability pokemon_ability[] 
+  pokemon_type    pokemon_type[]    
+}
+
+model pokemon_ability {
+  pokemon_id Int
+  ability_id Int
+  ability    ability? @relation(fields: [ability_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  pokemon    pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  
+  @@id([pokemon_id, ability_id])  
+}
+
+model pokemon_type {
+  pokemon_id Int
+  type_id    Int
+  pokemon    pokemon? @relation(fields: [pokemon_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  type       type? @relation(fields: [type_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  @@id([pokemon_id, type_id])  
+}
+
+model team {
+  id          Int       @id @default(autoincrement())
+  name        String?   @db.VarChar
+  trainer_id  Int?
+  status      statuses? @default(value: active)
+  created_at  DateTime? @default(now())
+  last_update DateTime? @default(now())
+  pokemon     pokemon[]
+  trainer     trainer?  @relation(fields: [trainer_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model trainer {
+  id          Int       @id @default(autoincrement())
+  username    String?   @db.VarChar @unique
+  gender      genders?
+  status      statuses? @default(value: active)
+  created_at  DateTime? @default(now())
+  last_update DateTime? @default(now())
+  team        team[]
+}
+
+model type {
+  id           Int            @id @default(autoincrement())
+  name         String?        @db.VarChar @unique
+  status       statuses?      @default(value: active)
+  created_at   DateTime?      @default(now())
+  last_update  DateTime?      @default(now())
+  pokemon_type pokemon_type[]
+}
+
+enum genders {
+  male
+  female
+  not_specified
+}
+
+enum statuses {
+  active
+}
