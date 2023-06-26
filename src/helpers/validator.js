@@ -20,3 +20,42 @@ export function response(schema, object) {
 
   return NextResponse.json(object)
 }
+
+/**
+ * Validates the request based on the HTTP method and path.
+ *
+ * @param {Object} req - The request object.
+ * @returns {Promise<void>} A promise that resolves once the request is validated.
+ */
+export async function validateRequest(req) {
+  const {
+    method,
+    nextUrl: { pathname },
+  } = req
+  if (method === 'GET' || method === 'DELETE') {
+    return
+  }
+  if (method === 'POST' && pathname === '/api/teams') {
+    return await validateData(req, createTeamBody)
+  }
+
+  if (method === 'PATCH' && pathname.startsWith('/api/teams')) {
+    return await validateData(req, editTeamBody)
+  }
+}
+
+/**
+ * Validates the request data against the provided schema.
+ *
+ * @param {Object} req - The request object.
+ * @param {Object} schema - The schema used for validation.
+ * @returns {Promise<void>} A promise that resolves if the data is valid, or throws an error otherwise.
+ */
+async function validateData(req, schema) {
+  const data = await req.json()
+  const validation = schema.safeParse(data)
+
+  if (!validation.success) {
+    return handleError('UnprocessableContent')
+  }
+}
