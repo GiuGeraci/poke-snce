@@ -3,6 +3,11 @@ const prisma = new PrismaClient()
 
 const load = async () => {
   try {
+    const trainer = {
+      username: 'Giuliano',
+      gender: 'male',
+      status: 'active',
+    }
     await prisma.trainer.create({
       data: trainer,
     })

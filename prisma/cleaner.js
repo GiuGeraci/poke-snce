@@ -28,11 +28,6 @@ const load = async () => {
   try {
     await deleteAllRecords([...tablesWithCompositeKey, ...tablesWithId])
     await resetAutoIncrement(tablesWithId)
-    const trainer = {
-      username: 'Giuliano',
-      gender: 'male',
-      status: 'active',
-    }
   } catch (e) {
     console.error(e)
     process.exit(1)
