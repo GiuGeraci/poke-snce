@@ -1,7 +1,14 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "services/*": ["./src/services/*"],
+      "lib/*": ["./src/lib/*"],
+      "app/*": ["./src/app/*"],
+      "utils/*": ["./src/utils/*"],
+      "validators/*": ["./src/validators/*"],
+      "helpers/*": ["./src/helpers/*"]
     }
-  }
+  },
+  "exclude": ["node_modules"]
 }
