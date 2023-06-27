@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
-import styles from './pokemon.module.css'
+import styles from './PokemonCard.module.css'
 export default function Pokemon({
   name,
   img_url,

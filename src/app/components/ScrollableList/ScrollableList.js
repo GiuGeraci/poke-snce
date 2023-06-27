@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import styles from './scrollableList.module.css'
+import styles from './ScrollableList.module.css'
 
 export default function ScrollableList({
   trainer_name,
