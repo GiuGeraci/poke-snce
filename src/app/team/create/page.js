@@ -6,7 +6,7 @@ import { useTrainer } from 'src/context/TrainerContext'
 export default function TeamCreate() {
   return (
     <div>
-      <Form label={'crea team'}></Form>
+      <Form label={'Create'}></Form>
     </div>
   )
 }
