@@ -106,6 +106,9 @@ export default class TeamService {
             include: includeAbilitiesAndTypesInPokemon,
           },
         },
+        orderBy: {
+          created_at: 'desc',
+        },
       })
 
       const teamsWithoutPokemon = await prisma.team.findMany({
@@ -113,8 +116,14 @@ export default class TeamService {
           trainer_id,
           pokemon: { none: {} },
         },
+        orderBy: {
+          created_at: 'desc',
+        },
       })
-
+      const mergedTeams = [...rawTeams, ...teamsWithoutPokemon]
+      mergedTeams.sort(
+        (a, b) => new Date(b.created_at) - new Date(a.created_at)
+      )
       const teams = formatTeams({
         rawTeams: [...rawTeams, ...teamsWithoutPokemon],
       })
