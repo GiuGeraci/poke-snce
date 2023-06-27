@@ -19,10 +19,10 @@ export const teamEntity = z.object({
 })
 
 export const teamExtended = teamEntity.extend({
-  pokemon: z.array(pokemonWithAbilitiesAndTypes),
+  pokemon: z.array(pokemonWithAbilitiesAndTypes).optional(),
   total_experience: z.number(),
-  types: z.array(z.string()),
-  abilities: z.array(z.string()),
+  types: z.array(z.string()).optional(),
+  abilities: z.array(z.string()).optional(),
 })
 
 export const teamList = z.array(teamExtended)

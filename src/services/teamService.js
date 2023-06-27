@@ -95,9 +95,7 @@ export default class TeamService {
       const rawTeams = await prisma.team.findMany({
         where: {
           trainer_id,
-          pokemon: {
-            some,
-          },
+          pokemon: { some },
         },
         include: {
           pokemon: {
@@ -105,7 +103,17 @@ export default class TeamService {
           },
         },
       })
-      const teams = formatTeams({ rawTeams })
+
+      const teamsWithoutPokemon = await prisma.team.findMany({
+        where: {
+          trainer_id,
+          pokemon: { none: {} },
+        },
+      })
+
+      const teams = formatTeams({
+        rawTeams: [...rawTeams, ...teamsWithoutPokemon],
+      })
       return teams
     } catch (error) {
       console.error('Error retrieving teams:', error)

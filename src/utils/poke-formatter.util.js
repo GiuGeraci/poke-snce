@@ -45,12 +45,13 @@ export function pokemonFormatterFromPokeApi({ data }) {
 export function formatTeams({ rawTeams }) {
   const teams = rawTeams.map(({ pokemon, ...team }) => ({
     ...team,
-    total_experience: pokemon.reduce(
-      (sum, pokemon) => sum + pokemon.base_experience,
-      0
-    ),
+    total_experience: pokemon
+      ? pokemon.reduce((sum, pokemon) => sum + pokemon.base_experience, 0)
+      : 0,
 
-    pokemon: pokemon.map((pkmn) => pokemonFormatter({ pokemon: pkmn })),
+    pokemon: pokemon
+      ? pokemon.map((pkmn) => pokemonFormatter({ pokemon: pkmn }))
+      : [],
   }))
   return addAbilitiesAndTypesArrayToTeams({ teams })
 }
@@ -65,16 +66,20 @@ export function addAbilitiesAndTypesArrayToTeams({ teams }) {
   return teams.map(({ pokemon, ...team }) => ({
     ...team,
     pokemon,
-    types: extractFieldValues({
-      array: pokemon,
-      child: 'pokemonTypes',
-      field: 'name',
-    }),
-    abilities: extractFieldValues({
-      array: pokemon,
-      child: 'pokemonAbilities',
-      field: 'name',
-    }),
+    types: pokemon
+      ? extractFieldValues({
+          array: pokemon,
+          child: 'pokemonTypes',
+          field: 'name',
+        })
+      : [],
+    abilities: pokemon
+      ? extractFieldValues({
+          array: pokemon,
+          child: 'pokemonAbilities',
+          field: 'name',
+        })
+      : [],
   }))
 }
 
