@@ -1,11 +1,11 @@
 'use client'
 import Button from 'components/atoms/Button/Button'
 import ScrollableList from 'components/ScrollableList/ScrollableList'
-import Pokemon from 'components/Pokemon/PokemonCard/PokemonCard'
 import { useEffect, useState } from 'react'
 import { fetchApi } from 'helpers/fetchApi'
 import Form from 'components/molecules/Form/Form'
 import { useRouter } from 'next/navigation'
+import PokemonCard from 'components/Pokemon/PokemonCard/PokemonCard'
 
 export default function TeamCreate({ params }) {
   const [pokemonList, setPokemonList] = useState([])
@@ -80,7 +80,7 @@ export default function TeamCreate({ params }) {
         <div>
           <ScrollableList>
             {pokemonList.map((pokemon, index) => (
-              <Pokemon key={index} {...pokemon}></Pokemon>
+              <PokemonCard key={index} {...pokemon}></PokemonCard>
             ))}
           </ScrollableList>
         </div>
