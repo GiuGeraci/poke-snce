@@ -7,6 +7,8 @@
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
   --squirtle: #505ec1;
+  --bulbasaur: #95d996;
+  --blue-sad: #736f8f;
 }
 
 @media (prefers-color-scheme: light) {
