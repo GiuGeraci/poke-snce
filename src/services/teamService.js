@@ -3,7 +3,7 @@ import {
   appendFiltersToSearchTeamQuery,
   includeAbilitiesAndTypesInPokemon,
 } from 'utils/query.util'
-import { formatTeams } from 'utils/poke-formatter.util'
+import { formatTeams, pokemonFormatter } from 'utils/poke-formatter.util'
 /**
  * Service class for interacting with team-related functionality.
  */
@@ -43,6 +43,9 @@ export default class TeamService {
           },
         },
       })
+      team.pokemon = team.pokemon.map((pokemon) =>
+        pokemonFormatter({ pokemon })
+      )
       return team
     } catch (error) {
       console.error('Error retrieving team:', error)
