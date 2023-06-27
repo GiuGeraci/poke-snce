@@ -1,0 +1,47 @@
+.card {
+  background-color: var(--blue-sad);
+  border-radius: 25px;
+  height: 350px;
+  width: 650px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 10px;
+}
+
+.top_info {
+  flex-direction: row;
+}
+
+.img_sprite {
+  color: transparent;
+  margin: 0 auto 0 auto;
+}
+
+.pokemon_info {
+  width: 15%;
+  flex-direction: row;
+}
+.name {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.pokemon_name {
+  font-size: 0.6rem;
+  text-align: center;
+}
+
+.type_box {
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 0.7rem;
+  margin-top: 15px;
+}
+
+.type_box > div ~ div {
+  margin-left: 15px;
+}
+
+.abilities_box {
+}
