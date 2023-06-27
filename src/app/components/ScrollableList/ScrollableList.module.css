@@ -1,0 +1,19 @@
+.scrollable_list {
+  max-height: 100%;
+  display: flex;
+  position: relative;
+  justify-content: flex-start;
+  background-color: var(--squirtle);
+}
+
+.scrollable_list[data-direction='horizontal'] {
+  flex-direction: row;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+
+.scrollable_list[data-direction='vertical'] {
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
