@@ -1,7 +1,7 @@
 'use client'
 import Button from 'components/atoms/Button/Button'
 import ScrollableList from 'components/ScrollableList/ScrollableList'
-import Pokemon from 'components/Pokemon/PokemonInfo/PokemonCard'
+import Pokemon from 'components/Pokemon/PokemonCard/PokemonCard'
 import { useEffect, useState } from 'react'
 import { fetchApi } from 'helpers/fetchApi'
 import Form from 'components/molecules/Form/Form'
