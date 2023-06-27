@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Image from 'next/image'
 import styles from './PokemonCard.module.css'
 import Badge from 'components/atoms/Badge/Badge'
-export default function Pokemon({
+export default function PokemonCard({
   name,
   img_url,
   base_experience,
@@ -34,7 +34,7 @@ export default function Pokemon({
   )
 }
 
-Pokemon.PropTypes = {
+PokemonCard.PropTypes = {
   name: PropTypes.string.isRequired,
   img_url: PropTypes.string.isRequired,
   base_experience: PropTypes.string.isRequired,
