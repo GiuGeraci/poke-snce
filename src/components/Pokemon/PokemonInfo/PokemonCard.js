@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types'
 import Image from 'next/image'
 import styles from './PokemonCard.module.css'
+import Badge from 'components/atoms/Badge/Badge'
 export default function Pokemon({
   name,
   img_url,
@@ -10,7 +11,7 @@ export default function Pokemon({
 }) {
   return (
     <div className={styles.card}>
-      <div className={styles.exp_badge}>{base_experience}</div>
+      <Badge label={base_experience}></Badge>
       <Image
         className={styles.img_sprite}
         src={img_url}

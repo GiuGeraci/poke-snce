@@ -1,0 +1,14 @@
+.exp_badge {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  border-radius: 50%;
+  background-color: yellow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  height: 40px;
+  width: 40px;
+  font-size: 0.8rem;
+}
