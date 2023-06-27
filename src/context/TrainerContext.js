@@ -17,11 +17,13 @@ export function useTrainer() {
   return useContext(TrainerContext)
 }
 
-export function TrainerProvider({ children }) {
-  const [trainer, setTrainer] = useState(null)
+export function TrainerProvider({ children, trainer_prop = {} }) {
+  const [trainer, setTrainer] = useState(trainer_prop)
+  
   const setCurrentTrainer = useCallback((trainer) => {
     setTrainer(trainer)
   }, [])
+
   const value = useMemo(
     () => ({
       trainer,

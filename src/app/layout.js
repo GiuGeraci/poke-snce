@@ -1,7 +1,7 @@
 import 'styles/globals.css'
 import localFont from 'next/font/local'
-import { TrainerProvider } from './context/TrainerContext'
-import Header from './components/molecules/Header/header'
+import Header from '/components/molecules/Header/header'
+import { TrainerProvider } from 'src/context/TrainerContext'
 
 const pokeFont = localFont({
   src: './fonts/pokemon.ttf',
@@ -28,11 +28,12 @@ async function getLoggedTrainer() {
 
 export default async function RootLayout({ children }) {
   const { trainer } = await getLoggedTrainer()
+
   return (
     <html lang="en">
       <body className={pokeFont.className}>
-        <TrainerProvider value={trainer}>
-          <Header trainer_name={trainer.username}></Header>
+        <TrainerProvider trainer_prop={trainer}>
+          <Header trainer={trainer}></Header>
           {children}
         </TrainerProvider>
       </body>
