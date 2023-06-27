@@ -2,6 +2,7 @@ import TypeService from 'services/typeService'
 import { typeList } from 'validators/types'
 import { response } from 'helpers/validator'
 
+export const dynamic = 'force-dynamic'
 /**
  * @swagger
  * /api/types:

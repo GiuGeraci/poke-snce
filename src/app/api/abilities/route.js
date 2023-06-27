@@ -2,6 +2,8 @@ import AbilityService from 'services/abilityService'
 import { abilityList } from 'validators/abilities'
 import { response } from 'helpers/validator'
 
+export const dynamic = 'force-dynamic'
+
 /**
  * @swagger
  * /api/abilities:

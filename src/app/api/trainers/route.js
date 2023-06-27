@@ -2,6 +2,7 @@ import TrainerService from 'services/trainerService'
 import { trainerEntity } from 'validators/trainers'
 import { response } from 'helpers/validator'
 
+export const dynamic = 'force-dynamic'
 /**
  * @swagger
  * /api/trainers:
