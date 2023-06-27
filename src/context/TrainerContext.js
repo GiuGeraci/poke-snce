@@ -1,10 +1,14 @@
 'use client'
 
-import { createContext } from 'react'
+import { createContext, useContext } from 'react'
 const trainerDefaultContext = {
-  trainer: { id: 1 },
+  trainer: { id: 1, username: '' },
 }
 export const TrainerContext = createContext(trainerDefaultContext)
+
+export function useTrainer() {
+  return useContext(TrainerContext)
+}
 
 export function TrainerProvider({ children, trainer }) {
   return (
