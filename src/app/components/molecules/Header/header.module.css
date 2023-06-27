@@ -1,0 +1,20 @@
+.header {
+  height: 100px;
+  padding: 10px;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  background-color: var(--squirtle);
+}
+
+.trainer_name {
+  height: calc(100% - 20px);
+  position: absolute;
+  display: flex;
+  align-items: center;
+  left: 10px;
+  padding-left: 20px;
+}
+
+.logo {
+}
