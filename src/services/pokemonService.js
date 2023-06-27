@@ -78,7 +78,6 @@ export default class PokemonService {
           id: pokemon_id,
         },
       })
-      console.log(count)
       return count > 0
     } catch (error) {
       console.error('Error deleting pokemon from team:', error)
