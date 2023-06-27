@@ -37,6 +37,11 @@ export default class TeamService {
     try {
       const team = await prisma.team.findUnique({
         where: { id: team_id },
+        include: {
+          pokemon: {
+            include: includeAbilitiesAndTypesInPokemon,
+          },
+        },
       })
       return team
     } catch (error) {

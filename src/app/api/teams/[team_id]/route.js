@@ -86,6 +86,47 @@ export async function PATCH(req, { params: { team_id } }) {
  *                     last_update:
  *                       type: string
  *                       format: date-time
+ *                     pokemon:
+ *                         type: array
+ *                         items:
+ *                           type: object
+ *                           properties:
+ *                             id:
+ *                               type: integer
+ *                             name:
+ *                               type: string
+ *                             base_experience:
+ *                               type: integer
+ *                             img_url:
+ *                               type: string
+ *                             team_id:
+ *                               type: integer
+ *                             status:
+ *                               type: string
+ *                             created_at:
+ *                               type: string
+ *                               format: date-time
+ *                             last_update:
+ *                               type: string
+ *                               format: date-time
+ *                             pokemonAbilities:
+ *                               type: array
+ *                               items:
+ *                                 type: object
+ *                                 properties:
+ *                                   id:
+ *                                     type: integer
+ *                                   name:
+ *                                     type: string
+ *                             pokemonTypes:
+ *                               type: array
+ *                               items:
+ *                                 type: object
+ *                                 properties:
+ *                                   id:
+ *                                     type: integer
+ *                                   name:
+ *                                     type: string
  */
 export async function GET(req, { params: { team_id } }) {
   const team = await TeamService.getTeamById({
