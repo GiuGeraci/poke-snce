@@ -1,7 +1,5 @@
 import PropTypes from 'prop-types'
 import styles from './Button.module.css'
-import { TrainerContext } from '../../../context/TrainerContext'
-import { useContext } from 'react'
 
 export default function Button({ label, onClick, disabled }) {
   return (
