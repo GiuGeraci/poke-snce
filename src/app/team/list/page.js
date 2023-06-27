@@ -1,10 +1,12 @@
 'use client'
 
+import TeamCard from 'components/Pokemon/TeamCard/TeamCard'
 import Button from 'components/atoms/Button/Button'
 import { fetchApi } from 'helpers/fetchApi'
 import { useContext, useEffect, useState } from 'react'
 import { TrainerContext } from 'src/context/TrainerContext'
 import { buildSearchParams } from 'utils/url.util'
+import { useRouter } from 'next/navigation'
 
 export default function TeamList() {
   const [selectedAbilities, setSelectedAbilities] = useState([])
@@ -13,6 +15,11 @@ export default function TeamList() {
   const [types, setTypes] = useState([])
   const [teams, setTeams] = useState([])
   const { trainer } = useContext(TrainerContext)
+  const router = useRouter()
+
+  const openEditTeam = async (id) => {
+    router.push(`/team/${id}/edit`)
+  }
 
   const retrieveData = async (path, setData, dataKey) => {
     const { data, statusCode } = await fetchApi({
@@ -88,7 +95,15 @@ export default function TeamList() {
       </div>
       <div>
         {teams.map(({ id, ...team }) => (
-          <h1 key={id}>{team.name}</h1>
+          <TeamCard
+            key={id}
+            name={team.name}
+            total_experience={team.total_experience}
+            pokemon={team.pokemon}
+            abilities={team.abilities}
+            types={team.types}
+            onClick={() => openEditTeam(id)}
+          ></TeamCard>
         ))}
       </div>
     </div>
