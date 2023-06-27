@@ -8,7 +8,9 @@
       "utils/*": ["./src/utils/*"],
       "validators/*": ["./src/validators/*"],
       "helpers/*": ["./src/helpers/*"],
-      "styles/*": ["./src/styles/*"]
+      "styles/*": ["./src/styles/*"],
+      "components/*": ["./src/components/*"],
+      "fonts/*": ["./src/fonts/*"]
     }
   },
   "exclude": ["node_modules"]
