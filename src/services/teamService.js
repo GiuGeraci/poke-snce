@@ -43,9 +43,14 @@ export default class TeamService {
           },
         },
       })
-      team.pokemon = team.pokemon.map((pokemon) =>
-        pokemonFormatter({ pokemon })
-      )
+      if (!team) {
+        return team
+      }
+      team.pokemon = team.pokemon
+        ? team.pokemon.map((pokemon) => pokemonFormatter({ pokemon }))
+        : []
+
+      console.log(team)
       return team
     } catch (error) {
       console.error('Error retrieving team:', error)
