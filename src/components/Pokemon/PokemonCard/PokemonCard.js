@@ -2,12 +2,14 @@ import PropTypes from 'prop-types'
 import Image from 'next/image'
 import styles from './PokemonCard.module.css'
 import Badge from 'components/atoms/Badge/Badge'
+import Button from 'components/atoms/Button/Button'
 export default function PokemonCard({
   name,
   img_url,
   base_experience,
   pokemonAbilities = [],
   pokemonTypes = [],
+  onClick,
 }) {
   return (
     <div className={styles.card}>
@@ -30,6 +32,7 @@ export default function PokemonCard({
           <div key={index}>{type.name}</div>
         ))}
       </div>
+      <Button label="Delete" onClick={onClick}></Button>
     </div>
   )
 }
@@ -40,4 +43,5 @@ PokemonCard.PropTypes = {
   base_experience: PropTypes.string.isRequired,
   abilities: PropTypes.arrayOf(PropTypes.string),
   types: PropTypes.arrayOf(PropTypes.string),
+  onClick: PropTypes.func,
 }

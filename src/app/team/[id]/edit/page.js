@@ -11,7 +11,7 @@ export default function TeamCreate({ params }) {
   const [pokemonList, setPokemonList] = useState([])
   const [team, setTeam] = useState([])
   const router = useRouter()
-  async function addPokemon() {
+  const addPokemon = async () => {
     const { data, statusCode } = await fetchApi({
       path: `teams/${params.id}/pokemon`,
       method: 'POST',
@@ -23,7 +23,7 @@ export default function TeamCreate({ params }) {
 
   const onInput = (event) => setName(event.target.value)
 
-  async function editTeam(event) {
+  const editTeam = async (event) => {
     event.preventDefault()
     if (name && name != '') {
       const { data, statusCode } = await fetchApi({
@@ -40,6 +40,18 @@ export default function TeamCreate({ params }) {
     }
   }
 
+  const deletePokemon = async (id) => {
+    const { data, statusCode } = await fetchApi({
+      path: `teams/${team.id}/pokemon/${id}`,
+      method: 'DELETE',
+    })
+
+    if (statusCode === 200) {
+      setPokemonList(
+        pokemonList.filter(({ id: existantId }) => existantId !== id)
+      )
+    }
+  }
   useEffect(() => {
     const retrieveTeam = async () => {
       const { data, statusCode } = await fetchApi({
@@ -56,8 +68,6 @@ export default function TeamCreate({ params }) {
 
     retrieveTeam()
   }, [params.id])
-
-  console.log(team)
 
   return (
     <div>
@@ -79,8 +89,12 @@ export default function TeamCreate({ params }) {
         ></Button>
         <div>
           <ScrollableList>
-            {pokemonList.map((pokemon, index) => (
-              <PokemonCard key={index} {...pokemon}></PokemonCard>
+            {pokemonList.map(({ id, ...pokemon }, index) => (
+              <PokemonCard
+                key={index}
+                {...pokemon}
+                onClick={() => deletePokemon(id)}
+              ></PokemonCard>
             ))}
           </ScrollableList>
         </div>
