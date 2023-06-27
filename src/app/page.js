@@ -16,7 +16,7 @@ export default function Home() {
           <h1 className="text-3xl">Gotta Catch Em All</h1>
           <h2 className="text-xl">Here begins your adventure</h2>
         </div>
-        <div className="flex flex-row justify-between w-full mt-20">
+        <div className="flex flex-row justify-between w-full mt-20 pt-12">
           <Button
             label="Create team"
             onClick={() => goTo('/team/create')}

@@ -32,18 +32,18 @@ export default function TeamCard({
         ))}
       </div>
       <div>
-        <div className={styles.type_list}>
+        <div className={styles.types_list}>
           {abilities.map((type, index) => (
-            <div key={index}>{type.name}</div>
+            <div key={index}>{type}</div>
           ))}
         </div>
         <div className={styles.abilities_list}>
           {types.map((type, index) => (
-            <div key={index}>{type.name}</div>
+            <div key={index}>{type}</div>
           ))}
         </div>
       </div>
-      <Button>Modifica Team</Button>
+      <Button label="Edit Team"></Button>
     </div>
   )
 }

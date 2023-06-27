@@ -39,9 +39,10 @@
   margin-top: 15px;
 }
 
-.type_box > div ~ div {
-  margin-left: 15px;
+.abilities_list {
+  font-size: 0.6rem;
 }
 
-.abilities_box {
+.types_list {
+  font-size: 0.6rem;
 }

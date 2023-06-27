@@ -4,6 +4,7 @@ import { fetchApi } from 'helpers/fetchApi'
 import { useRouter } from 'next/navigation'
 import { useContext, useState } from 'react'
 import { TrainerContext } from 'src/context/TrainerContext'
+import styles from './page.module.css'
 
 export default function TeamCreate() {
   const { trainer } = useContext(TrainerContext)
@@ -28,8 +29,12 @@ export default function TeamCreate() {
     }
   }
   return (
-    <div>
-      <Form label={'Create'} onSubmit={createTeam} onInput={onInput}></Form>
+    <div className={styles.form_box}>
+      <Form
+        label={'Create a team'}
+        onSubmit={createTeam}
+        onInput={onInput}
+      ></Form>
     </div>
   )
 }

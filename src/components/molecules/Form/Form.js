@@ -5,15 +5,17 @@ import Button from 'components/atoms/Button/Button'
 export default function Form({ label, onSubmit, onInput, placeholder = null }) {
   return (
     <form onSubmit={onSubmit}>
-      <div>
+      <div classname={styles.title}>
         <h1>{label}</h1>
       </div>
-      <input
-        name="name"
-        onInput={onInput}
-        placeholder={placeholder || 'Team Name'}
-      />
-      <Button label={label} type="submit"></Button>
+      <div>
+        <input
+          name="name"
+          onInput={onInput}
+          placeholder={placeholder || 'Team Name'}
+        />
+        <Button label={label} type="submit"></Button>
+      </div>
     </form>
   )
 }
