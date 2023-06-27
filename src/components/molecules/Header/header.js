@@ -15,7 +15,9 @@ export default function Header() {
   }
   return (
     <header className={styles.header}>
-      <div className={styles.trainer_name}>Benvenuto {trainer?.username}</div>
+      <div className={styles.trainer_name}>
+        Welcome on board {trainer?.username}
+      </div>
       <Logo onClick={redirectToHome}></Logo>
     </header>
   )
