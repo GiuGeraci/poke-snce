@@ -1,12 +1,12 @@
 'use client'
 
-import Button from './components/atoms/Button/Button'
+import Button from 'components/atoms/Button/Button'
 import { useRouter } from 'next/navigation'
 export default function Home() {
   const router = useRouter()
 
-  function goToCreateTeam() {
-    router.push('/teams/create')
+  function goTo(path) {
+    router.push(path)
   }
 
   return (
@@ -17,8 +17,11 @@ export default function Home() {
           <h2 className="text-xl">Qui comincia la tua avventura</h2>
         </div>
         <div className="flex flex-row justify-between w-full mt-20">
-          <Button label="Create team" onClick={goToCreateTeam}></Button>
-          <Button></Button>
+          <Button
+            label="Create team"
+            onClick={() => goTo('/team/create')}
+          ></Button>
+          <Button label="Team list" onClick={() => goTo('/team/list')}></Button>
         </div>
       </div>
     </main>
