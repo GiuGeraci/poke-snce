@@ -1,6 +1,6 @@
 import 'styles/globals.css'
 import localFont from 'next/font/local'
-import Header from '/components/molecules/Header/header'
+import Header from 'components/molecules/Header/header'
 import { TrainerProvider } from 'src/context/TrainerContext'
 
 const pokeFont = localFont({

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import styles from './Form.module.css'
-import Button from 'app/components/atoms/Button/Button'
+import Button from 'components/atoms/Button/Button'
 import { useContext, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { TrainerContext } from 'src/context/TrainerContext'

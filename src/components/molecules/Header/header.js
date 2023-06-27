@@ -2,17 +2,21 @@
 
 import PropTypes from 'prop-types'
 import styles from './header.module.css'
-import Logo from 'app/components/atoms/Logo/Logo'
+import Logo from 'components/atoms/Logo/Logo'
 import { TrainerContext } from 'src/context/TrainerContext'
 import { useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function Header() {
   const { trainer } = useContext(TrainerContext)
-  
+  const router = useRouter()
+  async function redirectToHome() {
+    router.push(`/`)
+  }
   return (
     <header className={styles.header}>
       <div className={styles.trainer_name}>Benvenuto {trainer?.username}</div>
-      <Logo></Logo>
+      <Logo onClick={redirectToHome}></Logo>
     </header>
   )
 }
