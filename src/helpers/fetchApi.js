@@ -15,8 +15,11 @@ export async function fetchApi({ path, body, method = 'GET' }) {
   if (body !== undefined) {
     options.body = JSON.stringify(body)
   }
-  console.log(process.env.BASE_API_PATH)
-  const response = await fetch(`${process.env.SERVER_HOST}/${path}`, options)
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_BASE_API_PATH}/${path}`,
+    options
+  )
 
   const parsedResponse = await response.json()
 
