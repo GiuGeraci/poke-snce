@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types'
-import styles from './logo.module.css'
+import styles from './Logo.module.css'
 import Image from 'next/image'
 
 export default function Logo({ onClick }) {
