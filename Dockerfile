@@ -1,12 +1,13 @@
 FROM node:18-alpine AS deps
 RUN apk add --no-cache libc6-compat
 WORKDIR /app
-COPY package.json package-lock.json ./
+COPY package.json package-lock.json .env ./
 RUN  npm install --production
 
 FROM node:18-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/.env  ./.env
 COPY . .
 COPY --from=ghcr.io/ufoscout/docker-compose-wait:latest /wait /wait
 
