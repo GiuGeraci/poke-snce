@@ -147,14 +147,14 @@ export async function POST(req) {
  *                                     type: integer
  *                                   name:
  *                                     type: string
- *                   abilities:
- *                     type: array
- *                     items:
- *                       type: string
- *                   types:
- *                     type: array
- *                     items:
- *                       type: string
+ *                         abilities:
+ *                           type: array
+ *                           items:
+ *                             type: string
+ *                         types:
+ *                           type: array
+ *                           items:
+ *                             type: string
  */
 export async function GET(req) {
   const queryParams = retrieveQueryParams({ req })
