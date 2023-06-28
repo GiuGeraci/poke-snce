@@ -20,6 +20,8 @@ Here are some additional considerations regarding the project:
 - The project Frontend part is visually imperfect and incomplete. Due to timing constraint all the Frontend feature have been developed except the styling and a advanced UI part. The required frontend routes are available.
 - The project utilizes the public PokeAPI for retrieving Pokémon data. However, please note that the availability and reliability of the API may affect the project's functionality.
 - To simplify the instructions, .env file has been pushed to the repo even if it's not a best practice.
+- The database diagram for the implemented solution is:
+  ![db](/docs/db_diagram.png)
 
 ## Prerequisites
 
