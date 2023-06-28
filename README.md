@@ -1,34 +1,74 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Project description
 
-## Getting Started
+The following project is a test developed for the company S'nce. It is a Pokémon-themed web application that simulates user access as a trainer. The trainer can add Pokémon teams, modify them, and view a list of its teams, which can be filtered by Pokémon abilities and types. The project utilizes the PokeAPI to retrieve Pokémon data.
 
-First, run the development server:
+[Assigned exercise](https://docs.google.com/document/d/1oiJKRK2ReXyzn2JTYgqO-KEGkSvpeRl-DA2pA4_1DJk/edit)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Technologies Used
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Node.js](https://nodejs.org/en)
+- [Next.js](https://nextjs.org/) 13.4.7 [with app router](https://nextjs.org/docs/app)
+- [Prisma](https://www.prisma.io/) (ORM)
+- [Docker](https://www.docker.com/) (with Dockerfile)
+- [Docker Compose v3.9](https://docs.docker.com/compose/compose-file/compose-file-v3/)
+- [PostgreSQL 14.8](https://www.postgresql.org/)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Initial Considerations
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Here are some additional considerations regarding the project:
 
-## Learn More
+- The project Frontend part is visually imperfect and incomplete. Due to timing constraint all the Frontend feature have been developed except the styling and a advanced UI part. The required frontend routes are available.
+- The project utilizes the public PokeAPI for retrieving Pokémon data. However, please note that the availability and reliability of the API may affect the project's functionality.
+- To simplify the instructions, .env file has been pushed to the repo even if it's not a best practice.
 
-To learn more about Next.js, take a look at the following resources:
+## Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Before getting started, make sure you have the following dependencies installed:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Docker
+- Docker Compose v3
+- Node.js v18
+- [NPM package manager](https://www.npmjs.com/)
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone the repository from GitHub:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+   ```bash
+   git clone git@github.com:GiuGeraci/poke-snce.git
+   ```
+
+2. Go to root folder and install dependencies using npm
+   ```bash
+   npm install
+   ```
+3. Run docker compose command to containerize application and db
+   ```bash
+   docker compose up #or docker-compose up
+   ```
+4. In another terminal check the webapp container id by searching in the active container list
+   ```bash
+   docker ps
+   ```
+5. Enter the container
+   ```bash
+   docker exec -ti <container_id> sh
+   ```
+6. Run the command to setting up db
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+7. Run the command to populate the db with the mocked current logged trainer
+
+   ```bash
+   npm run db:seed
+   ```
+
+8. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Final considerations and future evolution
+
+1. As anticipated before, the Frontend part can be enhanced and visually rebuilt.
+2. Pokemon are saved in the db as instance of Pokemon to enable in future possibilities like: pokemon upgrade, pokemon exchange between trainer.
+3. Add the trainer CRUD and auth strategy
+4. Add an admin role and dashboard to supervise trainer actions.
